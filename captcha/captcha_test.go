@@ -16,3 +16,17 @@ func TestGenerate(t *testing.T) {
 		assert.Equal(t, "one + 1", captcha.Generate("1", "1", "0", "1"))
 	})
 }
+
+func TestGenerate_ConvertOperator(t *testing.T) {
+	t.Run("should be + when operator is 0", func(t *testing.T) {
+		assert.Equal(t, "1 + one", captcha.Generate("0", "1", "0", "1"))
+	})
+
+	t.Run("should be - when operator is 1", func(t *testing.T) {
+		assert.Equal(t, "1 - one", captcha.Generate("0", "1", "1", "1"))
+	})
+
+	t.Run("should be * when operator is 2", func(t *testing.T) {
+		assert.Equal(t, "1 * one", captcha.Generate("0", "1", "2", "1"))
+	})
+}

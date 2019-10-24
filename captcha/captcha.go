@@ -1,9 +1,18 @@
 package captcha
 
+import "fmt"
+
 func Generate(format, leftOperand, operator, rightOperand string) string {
-	if format == "1" {
-		return "one + 1"
+	operatorSign := "+"
+	if operator == "1" {
+		operatorSign = "-"
+	} else if operator == "2" {
+		operatorSign = "*"
 	}
 
-	return "1 + one"
+	if format == "1" {
+		return fmt.Sprintf("one %s 1", operatorSign)
+	}
+
+	return fmt.Sprintf("1 %s one", operatorSign)
 }
