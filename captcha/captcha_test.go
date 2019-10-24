@@ -7,7 +7,7 @@ import (
 	"github.com/tatoonz/go-kata/captcha"
 )
 
-func TestGenerate(t *testing.T) {
+func TestGenerate_Format(t *testing.T) {
 	t.Run("should return left operand as-is and right operand as text when format is 0", func(t *testing.T) {
 		assert.Equal(t, "1 + one", captcha.Generate("0", "1", "0", "1"))
 	})
