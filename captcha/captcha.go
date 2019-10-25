@@ -21,5 +21,6 @@ func Generate(format, leftOperand, operator, rightOperand string) string {
 		return fmt.Sprintf("%s %s %s", operandWords[i], operatorSignMap[operator], rightOperand)
 	}
 
-	return fmt.Sprintf("1 %s one", operatorSignMap[operator])
+	i, _ := strconv.Atoi(rightOperand)
+	return fmt.Sprintf("%s %s %s", leftOperand, operatorSignMap[operator], operandWords[i])
 }

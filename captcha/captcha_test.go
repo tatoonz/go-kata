@@ -9,7 +9,16 @@ import (
 
 func TestGenerate_Format(t *testing.T) {
 	t.Run("should return left operand as-is and right operand as word when format is 0", func(t *testing.T) {
-		assert.Equal(t, "1 + one", captcha.Generate("0", "1", "0", "1"))
+		assert.Equal(t, captcha.Generate("0", "0", "0", "0"), "0 + zero")
+		assert.Equal(t, captcha.Generate("0", "1", "0", "1"), "1 + one")
+		assert.Equal(t, captcha.Generate("0", "2", "0", "2"), "2 + two")
+		assert.Equal(t, captcha.Generate("0", "3", "0", "3"), "3 + three")
+		assert.Equal(t, captcha.Generate("0", "4", "0", "4"), "4 + four")
+		assert.Equal(t, captcha.Generate("0", "5", "0", "5"), "5 + five")
+		assert.Equal(t, captcha.Generate("0", "6", "0", "6"), "6 + six")
+		assert.Equal(t, captcha.Generate("0", "7", "0", "7"), "7 + seven")
+		assert.Equal(t, captcha.Generate("0", "8", "0", "8"), "8 + eight")
+		assert.Equal(t, captcha.Generate("0", "9", "0", "9"), "9 + nine")
 	})
 
 	t.Run("should return left operand as word and right operand as-is when format is 1", func(t *testing.T) {
