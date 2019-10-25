@@ -15,12 +15,17 @@ var (
 	operandWords = []string{"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 )
 
+type operand string
+
+func (op operand) Word() string {
+	i, _ := strconv.Atoi(string(op))
+	return operandWords[i]
+}
+
 func Generate(format, leftOperand, operator, rightOperand string) string {
 	if format == "1" {
-		i, _ := strconv.Atoi(leftOperand)
-		return fmt.Sprintf("%s %s %s", operandWords[i], operatorSignMap[operator], rightOperand)
+		return fmt.Sprintf("%s %s %s", operand(leftOperand).Word(), operatorSignMap[operator], rightOperand)
 	}
 
-	i, _ := strconv.Atoi(rightOperand)
-	return fmt.Sprintf("%s %s %s", leftOperand, operatorSignMap[operator], operandWords[i])
+	return fmt.Sprintf("%s %s %s", leftOperand, operatorSignMap[operator], operand(rightOperand).Word())
 }
