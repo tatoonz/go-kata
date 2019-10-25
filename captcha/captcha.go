@@ -2,17 +2,23 @@ package captcha
 
 import (
 	"fmt"
+	"strconv"
 )
 
-var operatorSignMap = map[string]string{
-	"0": "+",
-	"1": "-",
-	"2": "*",
-}
+var (
+	operatorSignMap = map[string]string{
+		"0": "+",
+		"1": "-",
+		"2": "*",
+	}
+
+	operandWords = []string{"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
+)
 
 func Generate(format, leftOperand, operator, rightOperand string) string {
 	if format == "1" {
-		return fmt.Sprintf("one %s 1", operatorSignMap[operator])
+		i, _ := strconv.Atoi(leftOperand)
+		return fmt.Sprintf("%s %s %s", operandWords[i], operatorSignMap[operator], rightOperand)
 	}
 
 	return fmt.Sprintf("1 %s one", operatorSignMap[operator])
