@@ -1,4 +1,4 @@
-module github.com/tatoonz/go-kata
+module github.com/tatoonz/kata
 
 go 1.12
 
