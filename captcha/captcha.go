@@ -17,8 +17,8 @@ func (op operand) Word() string {
 	return operandWords[i]
 }
 
-func Generate(format, leftOperand string, operator int, rightOperand string) string {
-	if format == "1" {
+func Generate(format int, leftOperand string, operator int, rightOperand string) string {
+	if format == 1 {
 		return fmt.Sprintf("%s %s %s", operand(leftOperand).Word(), operatorSigns[operator], rightOperand)
 	}
 
