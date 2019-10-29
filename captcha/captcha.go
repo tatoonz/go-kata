@@ -2,7 +2,6 @@ package captcha
 
 import (
 	"fmt"
-	"strconv"
 )
 
 var (
@@ -12,8 +11,8 @@ var (
 
 func Generate(format int, leftOperand int, operator int, rightOperand int) string {
 	if format == 1 {
-		return fmt.Sprintf("%s %s %s", operandWords[leftOperand], operatorSigns[operator], strconv.Itoa(rightOperand))
+		return fmt.Sprintf("%s %s %d", operandWords[leftOperand], operatorSigns[operator], rightOperand)
 	}
 
-	return fmt.Sprintf("%s %s %s", strconv.Itoa(leftOperand), operatorSigns[operator], operandWords[rightOperand])
+	return fmt.Sprintf("%d %s %s", leftOperand, operatorSigns[operator], operandWords[rightOperand])
 }
