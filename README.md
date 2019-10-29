@@ -6,4 +6,4 @@
 
 This package contains code from my practice kata in Golang
 
-documentation is [here](https://godoc.org/github.com/tatoonz/kata/captcha)
+documentation is [here](https://godoc.org/github.com/tatoonz/go-kata)
