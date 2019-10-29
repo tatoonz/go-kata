@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tatoonz/kata/captcha"
+	"github.com/tatoonz/go-kata/captcha"
 )
 
 func TestGenerate_Format(t *testing.T) {
