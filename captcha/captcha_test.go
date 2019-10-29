@@ -1,10 +1,11 @@
 package captcha_test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tatoonz/go-kata/captcha"
+	"github.com/tatoonz/kata/captcha"
 )
 
 func TestGenerate_Format(t *testing.T) {
@@ -47,4 +48,16 @@ func TestGenerate_ConvertOperator(t *testing.T) {
 	t.Run("should be * when operator is 2", func(t *testing.T) {
 		assert.Equal(t, "1 * one", captcha.Generate(0, 1, 2, 1))
 	})
+}
+
+func ExampleGenerate() {
+	fmt.Println(captcha.Generate(0, 1, 0, 1))
+	fmt.Println(captcha.Generate(1, 1, 0, 1))
+	fmt.Println(captcha.Generate(1, 1, 1, 1))
+	fmt.Println(captcha.Generate(1, 1, 2, 1))
+	// output:
+	// 1 + one
+	// one + 1
+	// one - 1
+	// one * 1
 }
