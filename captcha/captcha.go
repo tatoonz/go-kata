@@ -5,9 +5,16 @@ import (
 )
 
 var (
+	formats       = []string{"%d %s %s", "%s %s %d"}
 	operatorSigns = []string{"+", "-", "*"}
 	operandWords  = []string{"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 )
+
+type operand int
+
+func (o operand) String() string {
+	return operandWords[o]
+}
 
 /*
 Generate returns captcha in string format.
@@ -19,9 +26,5 @@ Format can be:
   - 1 the leftOperand will show the number in word  but the rightOperand will show the number as-is
 */
 func Generate(format int, leftOperand int, operator int, rightOperand int) string {
-	if format == 1 {
-		return fmt.Sprintf("%s %s %d", operandWords[leftOperand], operatorSigns[operator], rightOperand)
-	}
-
-	return fmt.Sprintf("%d %s %s", leftOperand, operatorSigns[operator], operandWords[rightOperand])
+	return fmt.Sprintf(formats[format], operand(leftOperand), operatorSigns[operator], operand(rightOperand))
 }
